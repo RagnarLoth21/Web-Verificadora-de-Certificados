@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Certificados - ICA Junín</title>
     <style>
         :root {
             --color-primario: #1a472a;
             --color-secundario: #c5a047;
-            --color-texto: #333333;
+            --color-texto: #333;
             --color-fondo: #f8f8f8;
-            --color-exito: #e8f5e9;
-            --color-error: #ffe8e8;
             --sombra: 0 4px 12px rgba(0,0,0,0.1);
             --borde-radius: 12px;
-            --transition: all 0.3s ease;
         }
 
         * {
@@ -31,105 +28,99 @@
             background-image: url('imagenes/FondoColAboB1.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 15px;
         }
 
         .logo-container {
             text-align: center;
-            padding: 15px 0 5px; /* Ajustado para reducir espacio */
+            margin: 10px 0;
             width: 100%;
         }
 
         .logo {
-            height: 100px; /* Tamaño moderado para móviles */
+            width: auto;
+            height: 80px;
             object-fit: contain;
-            margin-bottom: 5px; /* Reducido espacio bajo el logo */
+            transition: all 0.3s;
         }
 
         .container {
             width: 100%;
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255,0.97);
             border-radius: var(--borde-radius);
             box-shadow: var(--sombra);
-            margin: 0 auto 20px; /* Espacio solo abajo */
+            margin-top: 10px;
         }
 
         .header {
-            padding: 5px 20px 10px; /* Reducido significativamente */
+            padding: 15px 20px 5px;
             text-align: center;
         }
 
         h1 {
             font-size: 1.6rem;
-            font-weight: 600;
             color: var(--color-primario);
-            margin-bottom: 5px; /* Reducido espacio bajo el título */
+            margin-bottom: 5px;
         }
 
         .mensaje-institucional {
             font-size: 0.95rem;
             color: var(--color-texto);
-            margin-bottom: 5px; /* Mínimo espacio */
+            margin-bottom: 8px;
         }
 
         .content {
-            padding: 5px 20px 20px; /* Reducido espacio arriba */
-        }
-
-        .formulario-busqueda {
-            margin-bottom: 15px;
+            padding: 5px 20px 25px;
         }
 
         .form-group {
-            margin-bottom: 15px; /* Espacio entre campos reducido */
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
-            margin-bottom: 5px; /* Reducido espacio bajo etiquetas */
+            margin-bottom: 5px;
             color: var(--color-primario);
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         select, input {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #ddd;
             border-radius: var(--borde-radius);
-            font-size: 0.95rem;
-            background-color: white;
-            transition: var(--transition);
+            font-size: 1rem;
+            background: white;
+            margin-bottom: 3px;
         }
 
         select:focus, input:focus {
             outline: none;
             border-color: var(--color-secundario);
-            box-shadow: 0 0 0 3px rgba(197, 160, 71, 0.2);
+            box-shadow: 0 0 0 3px rgba(197,160,71,0.2);
         }
 
         button {
             width: 100%;
             padding: 14px;
-            background-color: var(--color-primario);
+            background: var(--color-primario);
             color: white;
             border: none;
             border-radius: var(--borde-radius);
-            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
             margin-top: 10px;
+            transition: all 0.3s;
         }
 
         button:hover {
-            background-color: #123321;
+            background: #123321;
         }
 
         #resultado {
@@ -139,23 +130,45 @@
             display: none;
         }
 
-        /* ... (mantén el resto de estilos igual) ... */
+        .exito {
+            background: #e8f5e9;
+            border-left: 4px solid var(--color-primario);
+        }
+
+        .error {
+            background: #ffe8e8;
+            border-left: 4px solid #cc0000;
+        }
 
         @media (min-width: 768px) {
             .logo {
-                height: 120px; /* Tamaño aumentado para desktop */
+                height: 120px;
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .mensaje-institucional {
-                font-size: 1.05rem;
+            .container {
+                margin-top: 20px;
             }
             
             .content {
-                padding: 10px 30px 30px; /* Un poco más de espacio en desktop */
+                padding: 15px 30px 30px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .logo {
+                height: 150px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .mensaje-institucional {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -185,7 +198,7 @@
 
                 <div class="form-group">
                     <label for="identificador">DNI o Código:</label>
-                    <input type="text" id="identificador" placeholder="Ingrese su número de DNI o código" inputmode="numeric">
+                    <input type="text" id="identificador" placeholder="Ingrese su DNI o código" inputmode="numeric">
                 </div>
 
                 <button onclick="buscarCertificado()">Buscar Certificado</button>
@@ -197,38 +210,34 @@
 
     <script>
         function buscarCertificado() {
-            const eventoSelect = document.getElementById('evento');
-            const evento = eventoSelect.value;
+            const evento = document.getElementById('evento').value;
             const identificador = document.getElementById('identificador').value.trim();
             const resultado = document.getElementById('resultado');
 
+            // Validación
             if(!evento || !identificador) {
                 resultado.style.display = 'block';
                 resultado.className = 'error';
-                resultado.innerHTML = '<p>Por favor complete todos los campos</p>';
+                resultado.innerHTML = '❌ Por favor complete todos los campos';
                 return;
             }
 
+            // Simular búsqueda
             resultado.style.display = 'block';
-            resultado.className = 'cargando';
-            resultado.innerHTML = '<p>Buscando certificado...</p>';
-
-            setTimeout(() => {
-                resultado.className = 'exito';
-                resultado.innerHTML = `
-                    <div class="certificado-info">
-                        <h3>Certificado encontrado</h3>
-                        <p><strong>Evento:</strong> ${eventoSelect.options[eventoSelect.selectedIndex].text}</p>
-                        <p><strong>DNI/Código:</strong> ${identificador}</p>
-                        <p><strong>Estado:</strong> Válido</p>
-                    </div>
-                    <button onclick="descargarCertificado()">Descargar Certificado</button>
-                `;
-            }, 1000);
+            resultado.className = 'exito';
+            resultado.innerHTML = `
+                <div class="certificado-info">
+                    <h3>✅ Certificado encontrado</h3>
+                    <p><strong>Evento:</strong> ${document.getElementById('evento').options[document.getElementById('evento').selectedIndex].text}</p>
+                    <p><strong>DNI/Código:</strong> ${identificador}</p>
+                    <p><strong>Estado:</strong> Válido</p>
+                </div>
+                <button onclick="descargarCertificado()" style="margin-top:10px;">📄 Descargar Certificado</button>
+            `;
         }
 
         function descargarCertificado() {
-            alert('Descarga simulada');
+            alert('Descarga exitosa (simulación)');
         }
     </script>
 </body>
